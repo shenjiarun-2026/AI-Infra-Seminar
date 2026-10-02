@@ -1,0 +1,1102 @@
+{
+  "timestamp_utc": "2026-09-30T17:12:40.673667+00:00",
+  "gpu": {
+    "physical_index": 4,
+    "uuid": "GPU-81066c34-ab4c-a0e4-f264-e9477791ae8b",
+    "name": "NVIDIA GeForce RTX 5090",
+    "memory_used_before_mib": 2,
+    "utilization_before_percent": 0,
+    "compute_processes_before": [],
+    "sm_count": 170
+  },
+  "environment": {
+    "prefix": "/225045001/miniconda3/envs/hw1_attention_py311",
+    "python": "3.11.16",
+    "torch": "2.8.0",
+    "transformers": "4.57.1",
+    "flash-attn": "2.8.3",
+    "torch_cuda": "12.8",
+    "driver": "570.124.04"
+  },
+  "configuration": {
+    "module": "transformers.models.llama.modeling_llama.LlamaAttention",
+    "implementation_file": "/225045001/miniconda3/envs/hw1_attention_py311/lib/python3.11/site-packages/transformers/models/llama/modeling_llama.py",
+    "input_shape": [
+      2,
+      512,
+      1024
+    ],
+    "heads": 16,
+    "kv_heads": 16,
+    "head_dim": 64,
+    "dtype": "float16",
+    "causal": true,
+    "dropout": 0.0,
+    "gradients": false,
+    "kv_cache": false,
+    "weights": "synthetic normal initialization, identical across backends",
+    "weights_fp32_sha256": "e8fabba078499c06bd15a75704e390736b9f725b577d9cda0670157300142d6e",
+    "seed": 20261001,
+    "trace_forwards_per_backend": 1,
+    "warmup_forwards": 20,
+    "precomputed_outside_forward": [
+      "RoPE cos/sin",
+      "eager causal mask"
+    ]
+  },
+  "correctness": {
+    "eager": {
+      "max_abs_error": 0.0,
+      "relative_l2": 0.0,
+      "atol": 0.002,
+      "rtol": 0.002,
+      "passed": true,
+      "causal_prefix_check": true
+    },
+    "sdpa": {
+      "max_abs_error": 0.00048828125,
+      "relative_l2": 0.0004497325571719557,
+      "atol": 0.002,
+      "rtol": 0.002,
+      "passed": true,
+      "causal_prefix_check": true
+    },
+    "flash_attention_2": {
+      "max_abs_error": 0.00048828125,
+      "relative_l2": 0.00044972309842705727,
+      "atol": 0.002,
+      "rtol": 0.002,
+      "passed": true,
+      "causal_prefix_check": true
+    }
+  },
+  "backends": {
+    "eager": {
+      "timing": {
+        "method": "CUDA Events around a complete module forward; no CUDA Graph",
+        "median_us": 294.46400701999664,
+        "min_us": 286.4319980144501,
+        "max_us": 368.1280016899109,
+        "samples_us": [
+          368.1280016899109,
+          346.015989780426,
+          334.01599526405334,
+          313.4720027446747,
+          309.5040023326874,
+          304.80000376701355,
+          296.9920039176941,
+          308.28800797462463,
+          296.51200771331787,
+          294.3040132522583,
+          301.2480139732361,
+          293.63200068473816,
+          292.38399863243103,
+          290.49599170684814,
+          289.44000601768494,
+          296.86400294303894,
+          293.69598627090454,
+          295.52000761032104,
+          295.6480085849762,
+          294.1119968891144,
+          296.25600576400757,
+          292.1600043773651,
+          293.0240035057068,
+          291.83998703956604,
+          293.2159900665283,
+          294.624000787735,
+          289.72798585891724,
+          286.4319980144501,
+          291.83998703956604,
+          287.4239981174469
+        ]
+      },
+      "trace": "/225045001/fudan-nlp-ai-infra-homework-20261001/homework1/results/rtx5090/eager/trace_view.json",
+      "trace_sha256": "d4e3ad26d373e3eb7ac0e8abdb31b896ff6fa6d08141d8fd6c3bbfeaae7012b5",
+      "forward_annotations": 1,
+      "kernel_count": 24,
+      "kernel_duration_sum_us": 190.62099999999998,
+      "operators": [
+        "aten::_softmax",
+        "aten::_to_copy",
+        "aten::_unsafe_view",
+        "aten::add",
+        "aten::as_strided",
+        "aten::bmm",
+        "aten::cat",
+        "aten::clone",
+        "aten::contiguous",
+        "aten::copy_",
+        "aten::dropout",
+        "aten::empty",
+        "aten::empty_like",
+        "aten::empty_strided",
+        "aten::expand",
+        "aten::linear",
+        "aten::matmul",
+        "aten::mm",
+        "aten::mul",
+        "aten::neg",
+        "aten::reshape",
+        "aten::slice",
+        "aten::softmax",
+        "aten::t",
+        "aten::to",
+        "aten::transpose",
+        "aten::unsqueeze",
+        "aten::view"
+      ],
+      "kernels": [
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 0.0,
+          "duration_us": 18.016,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 106.3994140625,
+          "duration_us": 14.624,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 152.765625,
+          "duration_us": 14.72,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 203.1328125,
+          "duration_us": 3.616,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 256.0927734375,
+          "duration_us": 2.24,
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 4, 64, 64>(at::native::(anonymous namespace)::OpaqueType<2u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 64, 64>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+          "start_us": 285.5,
+          "duration_us": 5.888,
+          "grid": [
+            340,
+            2,
+            1
+          ],
+          "block": [
+            512,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 302.6201171875,
+          "duration_us": 3.872,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1})",
+          "start_us": 323.1318359375,
+          "duration_us": 3.423,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 336.859375,
+          "duration_us": 3.008,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 362.3310546875,
+          "duration_us": 2.112,
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 4, 64, 64>(at::native::(anonymous namespace)::OpaqueType<2u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 64, 64>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+          "start_us": 376.283203125,
+          "duration_us": 5.888,
+          "grid": [
+            340,
+            2,
+            1
+          ],
+          "block": [
+            512,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 388.443359375,
+          "duration_us": 3.071,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1})",
+          "start_us": 401.2744140625,
+          "duration_us": 3.456,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 471.9287109375,
+          "duration_us": 3.137,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 495.2568359375,
+          "duration_us": 11.52,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x1_nn_align8>(cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x1_nn_align8::Params)",
+          "start_us": 523.576171875,
+          "duration_us": 13.76,
+          "grid": [
+            128,
+            2,
+            32
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::AUnaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul> >(int, at::native::AUnaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> >, std::array<char*, 2ul>)",
+          "start_us": 553.2724609375,
+          "duration_us": 6.592,
+          "grid": [
+            8192,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1})",
+          "start_us": 581.912109375,
+          "duration_us": 13.311,
+          "grid": [
+            16384,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void (anonymous namespace)::softmax_warp_forward<c10::Half, float, float, 9, false, false>(float*, c10::Half const*, int, int, int, bool const*, int, bool)",
+          "start_us": 606.455078125,
+          "duration_us": 13.536,
+          "grid": [
+            4096,
+            1,
+            1
+          ],
+          "block": [
+            32,
+            4,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::vectorized_elementwise_kernel<4, at::native::float16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::float16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)",
+          "start_us": 637.3349609375,
+          "duration_us": 7.296,
+          "grid": [
+            8192,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 682.90234375,
+          "duration_us": 4.352,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x2_nn_align8>(cutlass_80_wmma_tensorop_f16_s161616gemm_f16_32x32_64x2_nn_align8::Params)",
+          "start_us": 705.654296875,
+          "duration_us": 15.552,
+          "grid": [
+            32,
+            1,
+            32
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#10}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 734.388671875,
+          "duration_us": 3.008,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 788.853515625,
+          "duration_us": 14.623,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "sdpa": {
+      "timing": {
+        "method": "CUDA Events around a complete module forward; no CUDA Graph",
+        "median_us": 257.4879974126816,
+        "min_us": 254.33599948883057,
+        "max_us": 290.52799940109253,
+        "samples_us": [
+          290.52799940109253,
+          277.75999903678894,
+          270.2080011367798,
+          259.2639923095703,
+          260.0319981575012,
+          260.5760097503662,
+          262.1760070323944,
+          258.1759989261627,
+          255.3279995918274,
+          260.3200078010559,
+          257.1200132369995,
+          257.63198733329773,
+          265.4399871826172,
+          257.02399015426636,
+          256.73601031303406,
+          255.19999861717224,
+          258.976012468338,
+          258.14399123191833,
+          258.11201333999634,
+          254.33599948883057,
+          255.264014005661,
+          256.1599910259247,
+          256.3839852809906,
+          255.5840015411377,
+          255.5519938468933,
+          256.54399394989014,
+          261.50399446487427,
+          257.34400749206543,
+          255.10400533676147,
+          255.840003490448
+        ]
+      },
+      "trace": "/225045001/fudan-nlp-ai-infra-homework-20261001/homework1/results/rtx5090/sdpa/trace_view.json",
+      "trace_sha256": "390e64a1f9afe2ada161cf545684c3a0f886c0312c0c339860ab26b7570b826e",
+      "forward_annotations": 1,
+      "kernel_count": 15,
+      "kernel_duration_sum_us": 110.81500000000001,
+      "operators": [
+        "aten::_flash_attention_forward",
+        "aten::_scaled_dot_product_flash_attention",
+        "aten::_unsafe_view",
+        "aten::add",
+        "aten::as_strided",
+        "aten::cat",
+        "aten::empty",
+        "aten::empty_like",
+        "aten::empty_strided",
+        "aten::linear",
+        "aten::matmul",
+        "aten::mm",
+        "aten::mul",
+        "aten::neg",
+        "aten::reshape",
+        "aten::scaled_dot_product_attention",
+        "aten::slice",
+        "aten::t",
+        "aten::transpose",
+        "aten::unsqueeze",
+        "aten::view"
+      ],
+      "kernels": [
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 0.0,
+          "duration_us": 17.343,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 92.8935546875,
+          "duration_us": 14.4,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 134.58984375,
+          "duration_us": 14.24,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 177.0849609375,
+          "duration_us": 3.008,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 216.060546875,
+          "duration_us": 2.176,
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 4, 64, 64>(at::native::(anonymous namespace)::OpaqueType<2u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 64, 64>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+          "start_us": 240.2529296875,
+          "duration_us": 5.695,
+          "grid": [
+            340,
+            2,
+            1
+          ],
+          "block": [
+            512,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 257.7880859375,
+          "duration_us": 3.073,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1})",
+          "start_us": 274.3642578125,
+          "duration_us": 3.36,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 288.02734375,
+          "duration_us": 3.008,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 310.3642578125,
+          "duration_us": 2.112,
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 4, 64, 64>(at::native::(anonymous namespace)::OpaqueType<2u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 64, 64>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+          "start_us": 324.69921875,
+          "duration_us": 5.632,
+          "grid": [
+            340,
+            2,
+            1
+          ],
+          "block": [
+            512,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 337.1787109375,
+          "duration_us": 3.008,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1})",
+          "start_us": 348.5712890625,
+          "duration_us": 3.36,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<64, 128, 128, 4, false, false, cutlass::half_t, Flash_kernel_traits<64, 128, 128, 4, cutlass::half_t> >, false, true, false, false, true, true, false, false>(pytorch_flash::Flash_fwd_params)",
+          "start_us": 502.9052734375,
+          "duration_us": 15.872,
+          "grid": [
+            4,
+            2,
+            16
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 575.3193359375,
+          "duration_us": 14.528,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    "flash_attention_2": {
+      "timing": {
+        "method": "CUDA Events around a complete module forward; no CUDA Graph",
+        "median_us": 317.6800012588501,
+        "min_us": 313.05599212646484,
+        "max_us": 336.5760147571564,
+        "samples_us": [
+          336.5760147571564,
+          331.61601424217224,
+          319.9999928474426,
+          320.67200541496277,
+          319.0079927444458,
+          322.9120075702667,
+          321.3439881801605,
+          318.7519907951355,
+          316.70400500297546,
+          320.73599100112915,
+          317.6000118255615,
+          317.7599906921387,
+          325.3119885921478,
+          319.39199566841125,
+          315.2639865875244,
+          315.744012594223,
+          321.21598720550537,
+          315.0080144405365,
+          316.1599934101105,
+          313.50401043891907,
+          313.79199028015137,
+          315.3280019760132,
+          317.9520070552826,
+          317.56800413131714,
+          318.4320032596588,
+          316.51198863983154,
+          315.2959942817688,
+          313.9199912548065,
+          313.6639893054962,
+          313.05599212646484
+        ]
+      },
+      "trace": "/225045001/fudan-nlp-ai-infra-homework-20261001/homework1/results/rtx5090/flash_attention_2/trace_view.json",
+      "trace_sha256": "bfa19a0f32a39240374ebd54fc3daa4ad8fcd1233cf2c2c8026e9d80d5f97b7f",
+      "forward_annotations": 1,
+      "kernel_count": 15,
+      "kernel_duration_sum_us": 111.10300000000001,
+      "operators": [
+        "FlashAttnFunc",
+        "aten::_unsafe_view",
+        "aten::add",
+        "aten::alias",
+        "aten::as_strided",
+        "aten::cat",
+        "aten::empty",
+        "aten::empty_like",
+        "aten::empty_strided",
+        "aten::linear",
+        "aten::matmul",
+        "aten::mm",
+        "aten::mul",
+        "aten::neg",
+        "aten::reshape",
+        "aten::slice",
+        "aten::t",
+        "aten::transpose",
+        "aten::unsqueeze",
+        "aten::view",
+        "flash_attn::_flash_attn_forward"
+      ],
+      "kernels": [
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 0.0,
+          "duration_us": 17.536,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 93.4716796875,
+          "duration_us": 14.367,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 135.966796875,
+          "duration_us": 14.464,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 179.134765625,
+          "duration_us": 2.976,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 218.111328125,
+          "duration_us": 2.144,
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 4, 64, 64>(at::native::(anonymous namespace)::OpaqueType<2u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 64, 64>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+          "start_us": 243.615234375,
+          "duration_us": 5.632,
+          "grid": [
+            340,
+            2,
+            1
+          ],
+          "block": [
+            512,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 261.21484375,
+          "duration_us": 3.072,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1})",
+          "start_us": 278.0458984375,
+          "duration_us": 3.36,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 291.2314453125,
+          "duration_us": 3.072,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1}>(at::TensorIteratorBase&, at::native::neg_kernel_cuda(at::TensorIteratorBase&)::{lambda()#2}::operator()() const::{lambda()#8}::operator()() const::{lambda(c10::Half)#1} const&)::{lambda(int)#1})",
+          "start_us": 313.5341796875,
+          "duration_us": 2.176,
+          "grid": [
+            1024,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::(anonymous namespace)::CatArrayBatchedCopy<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 4, 64, 64>(at::native::(anonymous namespace)::OpaqueType<2u>*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<2u>, unsigned int, 64, 64>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)",
+          "start_us": 327.9658203125,
+          "duration_us": 5.632,
+          "grid": [
+            340,
+            2,
+            1
+          ],
+          "block": [
+            512,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > >(at::TensorIteratorBase&, at::native::BinaryFunctor<c10::Half, c10::Half, c10::Half, at::native::binary_internal::MulFunctor<float> > const&)::{lambda(int)#1})",
+          "start_us": 339.7744140625,
+          "duration_us": 3.072,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<c10::Half> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<c10::Half> const&)::{lambda(int)#1})",
+          "start_us": 351.3896484375,
+          "duration_us": 3.296,
+          "grid": [
+            2048,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void flash::flash_fwd_kernel<Flash_fwd_kernel_traits<64, 128, 128, 4, false, false, cutlass::half_t, Flash_kernel_traits<64, 128, 128, 4, cutlass::half_t> >, false, true, false, false, true, true, false, false>(flash::Flash_fwd_params)",
+          "start_us": 566.525390625,
+          "duration_us": 15.936,
+          "grid": [
+            4,
+            2,
+            16
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "void cutlass::Kernel2<cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8>(cutlass_80_tensorop_f16_s16816gemm_relu_f16_128x64_64x3_tn_align8::Params)",
+          "start_us": 671.8681640625,
+          "duration_us": 14.368,
+          "grid": [
+            128,
+            1,
+            1
+          ],
+          "block": [
+            128,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  }
+}

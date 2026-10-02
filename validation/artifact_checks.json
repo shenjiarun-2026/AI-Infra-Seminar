@@ -1,0 +1,85 @@
+{
+  "kernel_sha256": "e122507cef4324756e2828a97b097fb5802264158d54b2c4066ca08272418e2a",
+  "pdfs": [
+    {
+      "path": "output/pdf/homework1/report.pdf",
+      "pages": 5,
+      "bytes": 371204,
+      "fonts": [
+        "AAAAAA+AndaleMono",
+        "AAAAAA+ArialUnicodeMS",
+        "AAAAAB+ArialUnicodeMS",
+        "Helvetica"
+      ],
+      "text_boundary_issues": [],
+      "sha256": "6525a351765c48fb68b5d5afeca14fe42f73eb0ac3cbf50b0d903fc37a56d0a5"
+    },
+    {
+      "path": "output/pdf/homework2/report.pdf",
+      "pages": 6,
+      "bytes": 437933,
+      "fonts": [
+        "AAAAAA+AndaleMono",
+        "AAAAAA+ArialUnicodeMS",
+        "AAAAAB+ArialUnicodeMS",
+        "AAAAAC+ArialUnicodeMS",
+        "Helvetica"
+      ],
+      "text_boundary_issues": [],
+      "sha256": "0c3ac35cd9a94999eab8fa3343883866228d86e623cd37b1dea25fa621dd749c"
+    },
+    {
+      "path": "output/pdf/homework3/report.pdf",
+      "pages": 7,
+      "bytes": 410525,
+      "fonts": [
+        "AAAAAA+AndaleMono",
+        "AAAAAA+ArialUnicodeMS",
+        "AAAAAB+ArialUnicodeMS",
+        "AAAAAC+ArialUnicodeMS",
+        "Helvetica"
+      ],
+      "text_boundary_issues": [],
+      "sha256": "4cb2d00ecc28480eb366653fa56ab8000e4b817234232a87d2b47bae3799e074"
+    }
+  ],
+  "experiments": [
+    {
+      "homework": 1,
+      "modules": 5,
+      "traces": 6,
+      "equivalence": {
+        "max_abs_error": 0.00048828125,
+        "mean_abs_error": 9.296649295720272e-06,
+        "relative_l2": 0.00044081275700591505,
+        "tolerance_atol": 0.002,
+        "tolerance_rtol": 0.002
+      }
+    },
+    {
+      "homework": 2,
+      "performance_rows": 70,
+      "numeric_checks": 342,
+      "invalid_inputs_rejected": [
+        "noncontiguous",
+        "float64"
+      ],
+      "stream_check": true
+    },
+    {
+      "homework": 3,
+      "performance_rows": 73,
+      "numeric_checks": 36,
+      "invalid_inputs_rejected": [
+        "mismatched_shapes",
+        "noncontiguous",
+        "wmma_unaligned_dims"
+      ],
+      "stream_check": true
+    }
+  ],
+  "memcheck_zero_error_summaries": 2,
+  "hardware_counters": "permission_denied",
+  "sass_float4_instruction_found": true,
+  "sass_tensor_core_instruction_found": true
+}

@@ -1,0 +1,10 @@
+{
+  "stopped_pid": 34486,
+  "command": [
+    "/225045001/miniconda3/envs/shenjiarun/bin/python",
+    "occupy.py"
+  ],
+  "reason": "Confirmed occupy.py placeholder; earlier user authorization to stop occupancy processes",
+  "before": "GPU-4959cc57-51f6-4759-7d48-a602c805eb7a, 34482, /225045001/miniconda3/envs/shenjiarun/bin/python, 4660 MiB\nGPU-6796bbb0-d5a9-6899-23aa-82556a15925c, 34483, /225045001/miniconda3/envs/shenjiarun/bin/python, 4660 MiB\nGPU-0b282b42-a944-b4f7-6216-9ab06874326d, 34484, /225045001/miniconda3/envs/shenjiarun/bin/python, 4660 MiB\nGPU-826564da-278c-c7c1-13b9-a5d8a529234d, 34485, /225045001/miniconda3/envs/shenjiarun/bin/python, 4660 MiB\nGPU-81066c34-ab4c-a0e4-f264-e9477791ae8b, 34486, /225045001/miniconda3/envs/shenjiarun/bin/python, 4660 MiB\n",
+  "after": "GPU-4959cc57-51f6-4759-7d48-a602c805eb7a, 34482, /225045001/miniconda3/envs/shenjiarun/bin/python, 4660 MiB\nGPU-6796bbb0-d5a9-6899-23aa-82556a15925c, 34483, /225045001/miniconda3/envs/shenjiarun/bin/python, 4660 MiB\nGPU-0b282b42-a944-b4f7-6216-9ab06874326d, 34484, /225045001/miniconda3/envs/shenjiarun/bin/python, 4660 MiB\nGPU-826564da-278c-c7c1-13b9-a5d8a529234d, 34485, /225045001/miniconda3/envs/shenjiarun/bin/python, 4660 MiB\n"
+}

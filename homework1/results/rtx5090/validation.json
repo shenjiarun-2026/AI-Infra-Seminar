@@ -1,0 +1,20 @@
+{
+  "eager": {
+    "cpu_forward_scopes": 1,
+    "kernels": 24,
+    "bytes": 114829,
+    "sha256": "d4e3ad26d373e3eb7ac0e8abdb31b896ff6fa6d08141d8fd6c3bbfeaae7012b5"
+  },
+  "sdpa": {
+    "cpu_forward_scopes": 1,
+    "kernels": 15,
+    "bytes": 81618,
+    "sha256": "390e64a1f9afe2ada161cf545684c3a0f886c0312c0c339860ab26b7570b826e"
+  },
+  "flash_attention_2": {
+    "cpu_forward_scopes": 1,
+    "kernels": 15,
+    "bytes": 79899,
+    "sha256": "bfa19a0f32a39240374ebd54fc3daa4ad8fcd1233cf2c2c8026e9d80d5f97b7f"
+  }
+}

@@ -1,0 +1,5 @@
+==PROF== Connected to process 24943 (/225045001/miniconda3/envs/shenjiarun/bin/python3.11)
+==PROF== Connected to process 25193 (/usr/bin/nvidia-smi)
+==PROF== Disconnected from process 25193
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+==PROF== Disconnected from process 24943
